@@ -1,9 +1,9 @@
 import '../styles/index.css'
 import React from 'react'
 import App from 'next/app'
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
 import NProgressHandler from 'components/NProgressHandler'
 import Head from 'next/head'
-import { AuthContextProvider } from 'context/auth'
 import { Toaster } from 'components/Toast'
 
 class MyApp extends App {
@@ -33,10 +33,10 @@ class MyApp extends App {
           <meta content="/thumbnail.jpeg" property="og:image" />
           <meta content="/thumbnail.jpeg" name="twitter:image" />
         </Head>
-        <AuthContextProvider>
+        <AppRouterCacheProvider>
           <NProgressHandler />
           <Component {...pageProps} />
-        </AuthContextProvider>
+        </AppRouterCacheProvider>
         <Toaster />
       </>
     )

@@ -72,7 +72,7 @@ const DataFetchingPage = () => {
               className: 'text-right',
               render: () => (
                 <a
-                  className="text-pink-600 hover:text-pink-900 text-sm font-medium"
+                  className="text-orange-600 hover:text-orange-900 text-sm font-medium"
                   href="#edit"
                 >
                   Edit

@@ -21,7 +21,7 @@ const styles = tv({
       },
       false: {
         input:
-          'border-gray-300 text-gray-900 focus:ring-pink-500 focus:border-pink-500 focus:ring-1',
+          'border-gray-300 text-gray-900 focus:ring-orange-500 focus:border-orange-500 focus:ring-1',
       },
     },
   },

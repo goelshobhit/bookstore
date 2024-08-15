@@ -5,7 +5,7 @@ const styles = tv({
   variants: {
     invalid: {
       true: 'border-red-500 outline-none shadow-none focus:ring-0 focus:border-red-500',
-      false: 'focus:ring-pink-500 focus:border-pink-500 border-gray-300',
+      false: 'focus:ring-orange-500 focus:border-orange-500 border-gray-300',
     },
   },
 })

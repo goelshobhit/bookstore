@@ -31,7 +31,7 @@ const styles = tv({
       appearance: 'primary',
       disabled: false,
       className: [
-        'border-transparent text-white bg-pink-600 hover:bg-pink-700 focus:ring-pink-500',
+        'border-transparent text-white bg-orange-600 hover:bg-orange-700 focus:ring-orange-500',
         focusRing,
       ],
     },
@@ -57,7 +57,7 @@ const styles = tv({
       appearance: 'link',
       disabled: false,
       className: [
-        'text-pink-600 hover:text-pink-700 focus:ring-pink-500 rounded-sm',
+        'text-orange-600 hover:text-orange-700 focus:ring-orange-500 rounded-sm',
         focusRing,
       ],
     },
@@ -70,7 +70,7 @@ const styles = tv({
       appearance: 'default',
       disabled: false,
       className: [
-        'border-gray-300 text-gray-700 bg-white hover:bg-gray-50 focus:ring-pink-500',
+        'border-gray-300 text-gray-700 bg-white hover:bg-gray-50 focus:ring-orange-500',
         focusRing,
       ],
     },

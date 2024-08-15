@@ -9,7 +9,6 @@ import { Button } from 'components/Button'
 import { Text } from 'components/Text'
 import { Checkbox } from 'components/Checkbox'
 import { Divider } from 'components/Divider'
-import { useAuthContext } from 'context/auth'
 import { useRouter } from 'next/router'
 import { ROUTES } from 'constants/routes'
 import { Logo } from 'components/Logo'
@@ -30,7 +29,7 @@ const validationSchema = z.object({
 
 const LoginPage = () => {
   const { push } = useRouter()
-  const { login, isLogin } = useAuthContext()
+  const isLogin = false
   const formInstance = useForm({
     defaultValues: loginFormDefaultValues,
     resolver: zodResolver(validationSchema),
@@ -45,7 +44,8 @@ const LoginPage = () => {
 
   const onSubmit = (data: typeof loginFormDefaultValues) => {
     try {
-      login(data.email, data.password)
+      // login logic here
+      console.log(data)
     } catch (error) {
       console.error(error)
     }
@@ -99,7 +99,7 @@ const LoginPage = () => {
               type="button"
               fullWidth
               onClick={() => {
-                login('test@d.foundation', 'Thepassword1')
+                
               }}
             >
               Use demo account

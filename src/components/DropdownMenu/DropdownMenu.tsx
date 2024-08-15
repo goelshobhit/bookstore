@@ -27,8 +27,8 @@ const DropdownMenuSubTrigger = React.forwardRef<
     ref={ref}
     className={cx(
       'flex cursor-default select-none items-center rounded-md px-2 py-1.5 text-sm outline-none',
-      'focus:bg-pink-600 focus:text-white',
-      'data-[state=open]:bg-pink-600 data-[state=open]:text-white',
+      'focus:bg-orange-600 focus:text-white',
+      'data-[state=open]:bg-orange-600 data-[state=open]:text-white',
       { 'pl-8': inset },
       className,
     )}
@@ -87,9 +87,9 @@ const DropdownMenuItem = React.forwardRef<
     ref={ref}
     className={cx(
       'relative flex cursor-default select-none items-center rounded-md px-2 py-1.5 text-sm outline-none transition-colors',
-      'focus:bg-pink-600 focus:text-white',
+      'focus:bg-orange-600 focus:text-white',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
-      'data-[highlighted]:bg-pink-600 data-[highlighted]:text-white',
+      'data-[highlighted]:bg-orange-600 data-[highlighted]:text-white',
       inset && 'pl-8',
       className,
     )}
@@ -107,8 +107,8 @@ const DropdownMenuCheckboxItem = React.forwardRef<
     checked={checked}
     className={cx(
       'relative flex cursor-default select-none items-center rounded-md py-1.5 pl-8 pr-2 text-sm outline-none transition-colors',
-      'focus:bg-pink-600 focus:text-white',
-      'data-[highlighted]:bg-pink-600 data-[highlighted]:text-white',
+      'focus:bg-orange-600 focus:text-white',
+      'data-[highlighted]:bg-orange-600 data-[highlighted]:text-white',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       className,
     )}
@@ -133,9 +133,9 @@ const DropdownMenuRadioItem = React.forwardRef<
     ref={ref}
     className={cx(
       'relative flex cursor-default select-none items-center rounded-md py-1.5 pl-8 pr-2 text-sm outline-none transition-colors',
-      'focus:bg-pink-600 focus:text-white',
+      'focus:bg-orange-600 focus:text-white',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
-      'data-[highlighted]:bg-pink-600 data-[highlighted]:text-white',
+      'data-[highlighted]:bg-orange-600 data-[highlighted]:text-white',
       className,
     )}
     {...props}

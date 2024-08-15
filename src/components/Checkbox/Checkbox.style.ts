@@ -5,7 +5,7 @@ const styles = tv({
     container: 'relative inline-flex items-center',
     label: 'ml-2',
     input:
-      'h-4 w-4 rounded border text-pink-600 form-checkbox focus:ring-pink-500 border-gray-300',
+      'h-4 w-4 rounded border text-orange-600 form-checkbox focus:ring-orange-500 border-gray-300',
   },
   variants: {
     invalid: {
