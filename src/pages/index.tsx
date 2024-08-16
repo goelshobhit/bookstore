@@ -31,7 +31,7 @@ const DashboardPage = () => {
           <Row>
             <div className="xl:w-1/2 w-96 xl:ml-32">
               <Heading className="text-left pt-10 xl:text-6xl md:text-xl">
-                A collaborative Reading Time that you Need
+                A collaborative Reading Time that  <span className="text-orange-400">you Need</span>
               </Heading>
               <Text className="font-light pt-2 xl:text-2xl md:text-sm">
                 An enim nullam tempor sapien gravida donec enim ipsum porta
