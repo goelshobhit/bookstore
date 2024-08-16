@@ -15,6 +15,7 @@ import Box from '@mui/material/Box'
 import { useFetchBooks } from 'hooks/data/useFetchBooks'
 
 import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router';
 
 const WrapperSection = styled('div')({
   backgroundColor: COLORS.primaryLight,
@@ -31,7 +32,7 @@ const Row = styled('div')({
   },
 })
 
-const ApiDataContainer = dynamic(
+const BookContainer = dynamic(
   () => import('components/BookContainer/BookContainer'),
   {
     loading: () => <p>Loading...</p>,
@@ -40,8 +41,8 @@ const ApiDataContainer = dynamic(
 
 const DashboardPage = () => {
   const [skip, setSkip] = useState<number>(5)
-  const { books, isLoading, mutate } = useFetchBooks(skip)
- 
+  const { books, isLoading, mutate }: any = useFetchBooks(skip)
+  const router = useRouter();
 
   const handlePagination = (direction: string): void => {
     if (direction === 'next') {
@@ -52,8 +53,6 @@ const DashboardPage = () => {
       mutate()
     }
   }
-
-  console.log(skip)
 
   return (
     <Layout>
@@ -69,7 +68,10 @@ const DashboardPage = () => {
                 An enim nullam tempor sapien gravida donec enim ipsum porta
                 justo congue magna at pretium purus pretium ligula{' '}
               </Text>
-              <Button appearance="primary" className="my-7 animate-[wiggle_1s_ease-in-out_infinite]">
+              <Button
+                appearance="primary"
+                className="my-7 animate-[wiggle_1s_ease-in-out_infinite]"
+              >
                 Scroll
               </Button>
             </div>
@@ -84,12 +86,28 @@ const DashboardPage = () => {
       </WrapperSection>
 
       <Container className="py-32">
-        <div className='flex w-full justify-end'>
-        <Button appearance='primary' loading={isLoading} onClick={() => handlePagination('prev')} >{`<`}</Button>
-        <Button appearance="primary" className='ml-4' loading={isLoading} onClick={() => handlePagination('next')}>{`>`}</Button>
+        <div className="flex w-full justify-between pb-16">
+          <Heading as="h1" className="text-orange-400">
+            {' '}
+            Books Collection
+          </Heading>
+          <span>
+            <Button
+              loading={isLoading}
+              onClick={() => handlePagination('prev')}
+            >{`<`}</Button>
+            <Button
+              className="ml-4"
+              loading={isLoading}
+              onClick={() => handlePagination('next')}
+            >{`>`}</Button>
+            <Button appearance="primary" className="ml-4" loading={isLoading}  onClick={() => router.push('/forms')}>
+              Add Books
+            </Button>
+          </span>
         </div>
-    
-        <ApiDataContainer books={books} skip={skip} />
+
+        <BookContainer books={books} />
       </Container>
     </Layout>
   )
