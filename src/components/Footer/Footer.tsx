@@ -5,7 +5,7 @@ import ItemsContainer from './ItemsContainer'
 export const Footer = () => {
   return (
     <footer className="bg-#FFF8F2 text-black">
-      <div className="md:flex md:justify-between md:items-center sm:px-12 px-4 bg-[#FFF8F2] py-7">
+      <div className="md:flex md:justify-between md:items-center sm:px-12 px-4 bg-[#FFF8F2] mx-32 my-7 border border-orange-500 hover:border-2 rounded-lg">
         <Container>
           <h1
             className="py-5 lg:text-4xl text-3xl md:mb-0 mb-6 lg:leading-normal font-semibold

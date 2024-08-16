@@ -27,3 +27,14 @@ export interface ApiResponse {
     role?: string
     status?: string
   }
+
+  export interface Book {
+    id: number;
+    title: string;
+    author: string;
+    description: string;
+    cover: string;
+    publicationDate: string; // or Date
+  }
+  
+  export type Books = Book[];

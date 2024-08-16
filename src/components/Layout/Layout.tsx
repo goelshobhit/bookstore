@@ -4,7 +4,7 @@ import { Footer } from 'components/Footer'
 
 export const Layout = ({ children }: WithChildren) => {
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex h-screen bg-white-100">
       <main className="flex-1">
         <Header />
         {children}
