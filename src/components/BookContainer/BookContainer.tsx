@@ -11,7 +11,7 @@ import { useBooksContext } from 'context/book'
 import { usePath } from 'hooks/usePath'
 
 const BookContainer = () => {
-  const [skip, setSkip] = useState<number>(0)
+  const [skip, setSkip] = useState<number>(5)
   const { books, useFetchBooks, hasMore } = useBooksContext()
   const { isLoading, mutate } = useFetchBooks(skip)
 
