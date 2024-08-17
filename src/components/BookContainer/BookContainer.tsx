@@ -1,48 +1,63 @@
-import { Books, Book } from 'types/schema'
+import { useCallback, useEffect, useState } from 'react'
 
-import Grid from '@mui/material/Grid'
-import Image from 'next/image'
 import { Heading } from 'components/Heading'
+import { Button } from 'components/Button'
+import { BookCard } from 'components/BookCard'
+import { BookCardSkeleton } from 'components/BookCardSkeleton'
+import InfiniteScroll from 'react-infinite-scroll-component'
 
-type BookContainerProps = {
-  books: Books
-}
+// import { useFetchBooks } from 'hooks/data/useFetchBooks'
+import { useBooksContext } from 'context/book'
+import { usePath } from 'hooks/usePath'
 
-const BookContainer = ({ books = [] }: BookContainerProps) => {
+const BookContainer = () => {
+  const [skip, setSkip] = useState<number>(0)
+  const { books, useFetchBooks, hasMore } = useBooksContext()
+  const { isLoading, mutate } = useFetchBooks(skip)
+
+  const history = usePath()
+
+  useEffect(() => {
+    mutate()
+  }, [mutate])
+
+  const fetchData = useCallback(() => {
+    mutate()
+    setSkip(skip + 5)
+  }, [mutate, skip])
+
   return (
-    <Grid
-      columns={{ xs: 4, sm: 12, md: 12 }}
-      spacing={{ xs: 13, md: 5}}
-      container
-    >
-      {books.map((item: Book, index: number) => (
-        <Grid key={index} md={4} sm={6} xs={12} item>
-          <div className="bg-white h-full shadow-md overflow-hidden border rounded-3xl hover:cursor-pointer border-orange-500 min-h-12">
-            {item.cover && (
-              <Image
-                alt={item.title}
-                className="object-cover rounded-t"
-                height={400}
-                src={item.cover || 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?w=500&h=400&fit=crop&auto=format'}
-                width={500}
-              />
-            )}
-            <div className="p-4">
-              {item.title && (
-                <Heading className="text-lg font-bold mb-2 text-orange-400">
-                  {item.title}
-                </Heading>
-              )}
-              {item.description && (
-                <p className="text-gray-600 antialiased hover:subpixel-antialiased">
-                  {item.description}
-                </p>
-              )}
-            </div>
-          </div>
-        </Grid>
-      ))}
-    </Grid>
+    <div>
+      <div className="flex w-full justify-between pb-16">
+        <Heading as="h1" className="text-orange-400">
+          Books Collection
+        </Heading>
+        <span>
+          <Button
+            appearance="primary"
+            aria-disabled={isLoading}
+            className="ml-4"
+            disabled={isLoading}
+            onClick={() => history.push('/forms')}
+          >
+            Add Books
+          </Button>
+        </span>
+      </div>
+
+      <InfiniteScroll
+        dataLength={books.length} //This is important field to render the next data
+        hasMore={hasMore}
+        loader={!hasMore && <BookCardSkeleton />}
+        next={fetchData}
+        pullDownToRefreshThreshold={150}
+        releaseToRefreshContent={
+          <h3 style={{ textAlign: 'center' }}>&#8593; Release to refresh</h3>
+        }
+      >
+        <BookCard books={books} />
+      </InfiniteScroll>
+    </div>
   )
 }
 

@@ -1,13 +1,13 @@
 import { tv } from 'tailwind-variants'
 
 const styles = tv({
-  base: 'bg-white sm:rounded-lg',
+  base: 'bg-white',
   variants: {
     shadow: {
       true: 'shadow',
     },
     spacing: {
-      true: 'px-4 py-5 sm:px-6',
+      true: false,
     },
   },
 })

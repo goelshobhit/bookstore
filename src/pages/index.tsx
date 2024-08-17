@@ -1,21 +1,15 @@
-import { useState } from 'react'
 import { Heading } from 'components/Heading'
 import { Text } from 'components/Text'
 import { Layout } from 'components/Layout'
-
-import { styled } from '@mui/system'
-import { COLORS } from 'constants/colors'
-
 import { Container } from 'components/Container'
 import { Button } from 'components/Button'
 import CardScreen from 'components/icons/svg/card-screen.svg'
 
+import { styled } from '@mui/system'
 import Box from '@mui/material/Box'
-
-import { useFetchBooks } from 'hooks/data/useFetchBooks'
+import { COLORS } from 'constants/colors'
 
 import dynamic from 'next/dynamic'
-import { useRouter } from 'next/router';
 
 const WrapperSection = styled('div')({
   backgroundColor: COLORS.primaryLight,
@@ -40,19 +34,7 @@ const BookContainer = dynamic(
 )
 
 const DashboardPage = () => {
-  const [skip, setSkip] = useState<number>(5)
-  const { books, isLoading, mutate }: any = useFetchBooks(skip)
-  const router = useRouter();
 
-  const handlePagination = (direction: string): void => {
-    if (direction === 'next') {
-      setSkip(skip + 5)
-      mutate()
-    } else if (direction === 'prev') {
-      setSkip(Math.max(0, skip - 5))
-      mutate()
-    }
-  }
 
   return (
     <Layout>
@@ -68,12 +50,16 @@ const DashboardPage = () => {
                 An enim nullam tempor sapien gravida donec enim ipsum porta
                 justo congue magna at pretium purus pretium ligula{' '}
               </Text>
+              <a href='#books_collection'>
               <Button
                 appearance="primary"
-                className="my-7 animate-[wiggle_1s_ease-in-out_infinite]"
+                className="mt-5"
+
               >
-                Scroll
+                Read More...
               </Button>
+              </a>
+          
             </div>
             <Box
               className="xl:w-1/2 w-96"
@@ -85,29 +71,8 @@ const DashboardPage = () => {
         </Container>
       </WrapperSection>
 
-      <Container className="py-32">
-        <div className="flex w-full justify-between pb-16">
-          <Heading as="h1" className="text-orange-400">
-            {' '}
-            Books Collection
-          </Heading>
-          <span>
-            <Button
-              loading={isLoading}
-              onClick={() => handlePagination('prev')}
-            >{`<`}</Button>
-            <Button
-              className="ml-4"
-              loading={isLoading}
-              onClick={() => handlePagination('next')}
-            >{`>`}</Button>
-            <Button appearance="primary" className="ml-4" loading={isLoading}  onClick={() => router.push('/forms')}>
-              Add Books
-            </Button>
-          </span>
-        </div>
-
-        <BookContainer books={books} />
+      <Container className="py-32" id="books_collection">
+        <BookContainer />
       </Container>
     </Layout>
   )

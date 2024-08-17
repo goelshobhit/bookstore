@@ -35,6 +35,7 @@ export interface ApiResponse {
     description: string;
     cover: string;
     publicationDate: string; // or Date
+    isFavorite?: boolean 
   }
   
   export type Books = Book[];
